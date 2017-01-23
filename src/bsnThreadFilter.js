@@ -4,6 +4,8 @@ var showLinks = true;
 var showEmbeddedYoutube = true;
 var includeImages = false;
 
+function removePosts(showTwitter, showUsers, showLinks, showEmbeddedYoutube, includeImages){
+	
 var savedMsgIndexes = [];
 var opt = {};
 
@@ -11,7 +13,7 @@ var msgCopy = $(".message").clone(); // copy all messages
 msgCopy.children(".quote").remove(); // remove all qoutes from copied posts
 
 msgCopy.each(function (i, e) {
-	var twitterPatern = /( @+)|( ‏@+)|twitterwidget/m; // pattern for post with @ character and and embedded twitter
+	var twitterPatern = /( @+)|( ‏@+)|twitterwidget/m; // pattern for post with @ character and embedded twitter
 	var userUrlPatern = /href="\/user\//m;
 	var youtubePatern = /<iframe/m; // iframe use for embedded youtube
 	var hrefPattern = "";
@@ -52,3 +54,6 @@ msg.each(function (i, e) {
 	if (savedMsgIndexes.indexOf(i) == -1)
 		$(e).parents("tr").remove(); // remove original post block
 })
+}
+removePosts(showTwitter, showUsers, showLinks, showEmbeddedYoutube, includeImages);
+
